@@ -55,6 +55,7 @@ function Matrix({ mass }) {
 
     function dropHandler(e, board, animal) {
         e.preventDefault();
+        console.log(board)
         const currentIndex = currentBoard.indexOf(currentAnimal)
         currentBoard.splice(currentIndex, 1)
         const dropIndex = board.indexOf(animal)
@@ -71,11 +72,11 @@ function Matrix({ mass }) {
     }
 
     function dragEndHandler(e) {
-        
+
     }
 
     function dragLeaveHandler(e) {
-        
+
     }
 
     return (
