@@ -9,7 +9,7 @@ import MatrixTest from "./components/Matrix2";
 function App() {
     return (
         <div className="App">
-            <MatrixTest size={3}></MatrixTest>
+            {/*<MatrixTest size={3}></MatrixTest>*/}
             <List></List>
         </div>
     );

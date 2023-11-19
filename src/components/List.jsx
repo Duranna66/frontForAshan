@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {FixedSizeList} from "react-window";
+import MatrixTest from "./Matrix2";
 
 function List(props) {
     const [appState, setAppState] = useState([]);
@@ -58,6 +59,7 @@ function List(props) {
 
     return (
         <div className="App">
+            <MatrixTest size={3}></MatrixTest>
             <div className="item">
                 <FixedSizeList
                     height={400}

@@ -65,13 +65,13 @@
   width: 500%;
   border: 2px solid lightpink;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: grab;
   background-color: white;
 }
 .empty {
   cursor: grab;
-  border: 65px solid white;
+  border: 30px solid white;
 }
 
 
