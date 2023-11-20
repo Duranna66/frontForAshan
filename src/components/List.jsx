@@ -20,37 +20,15 @@ function List(props) {
         e.preventDefault();
     }
     function dragStartHandler(e, index) {
-        setCurrentAnimal({ id: appState[index].id, index });
-        // e.dataTransfer.setData('animalId', appState[index].id);
-    }
-
-    function dragLeaveHandler(e) {
-        e.target.style.boxShadow = 'none';
-    }
-    function dragEndHandler(e) {
-        e.target.style.boxShadow = 'none';
-        setCurrentAnimal(null);
-    }
-    function dropHandler(e, appState, index) {
-        e.preventDefault()
-
-    }
-
-    function dragEnterHandler(e) {
-        e.target.style.boxShadow = '0 2px 3px gray';
+        setCurrentAnimal([{ id: 0, prison_id: appState[index].phoneNumber, animal_id: appState[index].id, name:appState[index].name }]);
+        console.log(currentAnimal)
     }
 
     const renderRow = ({index, style }) => (
         <div
-            // id={`animal-${appState[index].id}`}
-            // onDragStart={(e) => dragStartHandler(e, index)}
-            // onDragOver={dragOverHandler}
-            // onDragLeave={dragLeaveHandler}
-            // onDragEnter={dragEnterHandler}
-            // onDragEnd={dragEndHandler}
-            // onDrop={(e) => dropHandler(e, index)}
-            // style={style}
-            draggable={'true'}
+            draggable={true}
+            onDragStart={(e) => dragStartHandler(e, index)}
+            onDragOver={(e) => dragOverHandler(e)}
             className="items"
         >
             {appState[index].name}
@@ -59,7 +37,7 @@ function List(props) {
 
     return (
         <div className="App">
-            <MatrixTest size={3}></MatrixTest>
+            <MatrixTest size={4} appState={appState} currentItem={currentAnimal} setCurrentItem={setCurrentAnimal}></MatrixTest>
             <div className="item">
                 <FixedSizeList
                     height={400}

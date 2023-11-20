@@ -21,7 +21,7 @@
 .item {
   /*margin-left: 500px;*/
   min-width: 450px;
-  min-height: 450px;
+  min-height: 600px;
   border: 5px solid lightblue;
   padding: 20px 10px;
   border-radius: 12px;
@@ -72,6 +72,12 @@
 .empty {
   cursor: grab;
   border: 30px solid white;
+}
+.button {
+
+}
+. bott {
+  margin-top: 100px;
 }
 
 

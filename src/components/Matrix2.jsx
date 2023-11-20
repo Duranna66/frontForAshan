@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import List from "./List";
+import Button from "./Button";
 
 
-function MatrixTest({ size }) {
-    const [appState, setAppState] = useState([])
-    useEffect(() => {
-        const apiUrl = "http://localhost:8080/search/all";
-        axios.get(apiUrl).then((resp) => {
-            const allPersons = resp.data;
-            setAppState(allPersons);
-        });
-    }, []);
+function MatrixTest({ size, appState, currentItem, setCurrentItem }) {
+    // const [appState, setAppState] = useState([])
+    // useEffect(() => {
+    //     const apiUrl = "http://localhost:8080/search/all";
+    //     axios.get(apiUrl).then((resp) => {
+    //         const allPersons = resp.data;
+    //         setAppState(allPersons);
+    //     });
+    // }, []);
     let matrix = [];
-    const [currentBoard, setCurrentBoard] = useState([])
-    const [currentItem, setCurrentItem] = useState([])
+    // const [currentItem, setCurrentItem] = useState([])
     for (let i = 0; i < size; i++) {
         matrix.push([]);
         for (let j = 0; j < size; j++) {
@@ -49,7 +49,7 @@ function MatrixTest({ size }) {
         }
     }
 
-    function dragOverHandler(e, board, item) {
+    function dragOverHandler(e) {
         e.preventDefault()
     }
 
@@ -57,18 +57,17 @@ function MatrixTest({ size }) {
 
     }
 
-    function dragStartHandler(e, board, itemr) {
+    function dragStartHandler(e, itemr) {
         // console.log(board) //двумерный массив массив, с животными с которого взяли
         // console.log(itemr) //массив с данными животного, которого взяли
         setCurrentItem(itemr);
-        setCurrentBoard(board)
     }
 
     function dragEndHandler(e) {
 
     }
 
-    function dropHandler(e, board, itemr) {
+    function dropHandler(e, itemr) {
         e.preventDefault()
         // console.log(board) //двумерный массив , с животными куда положили
         // console.log(itemr) //массив с данными животного, в которого положили
@@ -95,8 +94,7 @@ function MatrixTest({ size }) {
             let tmp = appState[k1].phoneNumber;
             appState[k1].phoneNumber = appState[k2].phoneNumber
             appState[k2].phoneNumber = tmp
-            setCurrentItem(itemr);
-            setCurrentBoard(board)
+            // setCurrentBoard(board)
         }
         else { //itemr is empty['', 'prison_id', '']
             appState[k2].phoneNumber = itemr.prison_id
@@ -105,7 +103,7 @@ function MatrixTest({ size }) {
         }
         // console.log('app:',appState)
         setCurrentItem(itemr);
-        setCurrentBoard(board)
+        // setCurrentBoard(board)
     }
     return (
         <table className="item">
@@ -118,15 +116,15 @@ function MatrixTest({ size }) {
                                     if (r.name !== '') {
                                         return <div
                                             draggable={true}
-                                            onDragOver={(e) => dragOverHandler(e, matrix[rowIndex][colIndex], r)}
+                                            onDragOver={(e) => dragOverHandler(e, r)}
                                             onDragLeave={(e) => dragLeaveHandler(e)}
-                                            onDragStart={(e) => dragStartHandler(e, matrix[rowIndex][colIndex][0], r)}
+                                            onDragStart={(e) => dragStartHandler(e, r)}
                                             onDragEnd={(e) => dragEndHandler(e)}
-                                            onDrop={(e) => dropHandler(e, matrix[rowIndex][colIndex][0], r)}
+                                            onDrop={(e) => dropHandler(e, r)}
                                             className={"items"}>{r.name} {x.id}</div>;
                                     } else {
-                                        return <div className={"empty"} onDrop={(e) => dropHandler(e, matrix[rowIndex][colIndex], r)}
-                                                    onDragOver={(e) => dragOverHandler(e, matrix[rowIndex][colIndex], r)}
+                                        return <div className={"empty"} onDrop={(e) => dropHandler(e, r)}
+                                                    onDragOver={(e) => dragOverHandler(e)}
                                         >{r.name}</div>
                                     }
                                 })
@@ -135,7 +133,9 @@ function MatrixTest({ size }) {
                     ))}
                 </tr>
             ))}
+            <Button></Button>
         </table>
+
     );
 }
 
