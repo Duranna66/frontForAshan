@@ -10,9 +10,7 @@ import Button from "./components/Button";
 function App() {
     return (
         <div className="App">
-            <Matrix></Matrix>
-            {/*<MatrixTest size={3}></MatrixTest>*/}
-            <List></List>
+            <MatrixTest size={3}></MatrixTest>
         </div>
 
     );

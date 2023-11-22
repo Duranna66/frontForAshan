@@ -21,13 +21,14 @@
 .item {
   /*margin-left: 500px;*/
   min-width: 450px;
-  min-height: 600px;
+  min-height: 450px;
   border: 5px solid lightblue;
   padding: 20px 10px;
   border-radius: 12px;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  flex-direction: column; /* располагает элементы вертикально */
+  align-items: center; /* выравнивает элементы по центру по горизонтали */
+  justify-content: start /* распределяет пространство вокруг элементов */
 }
 .items {
   width: 100%;
@@ -68,6 +69,8 @@
   border-radius: 5px;
   cursor: grab;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
 }
 .empty {
   cursor: grab;
@@ -79,5 +82,21 @@
 . bott {
   margin-top: 100px;
 }
+.item1 {
+  /*margin-left: 200px;*/
+  min-width: 450px;
+  min-height: 600px;
+  border: 5px solid lightblue;
+  padding: 20px 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 

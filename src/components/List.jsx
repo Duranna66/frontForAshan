@@ -20,7 +20,7 @@ function List(props) {
         e.preventDefault();
     }
     function dragStartHandler(e, index) {
-        setCurrentAnimal([{ id: 0, prison_id: appState[index].phoneNumber, animal_id: appState[index].id, name:appState[index].name }]);
+        setCurrentAnimal([{ id: 0, prisonId: appState[index].prisonId, animal_id: appState[index].id, name:appState[index].name }]);
         console.log(currentAnimal)
     }
 
@@ -37,7 +37,7 @@ function List(props) {
 
     return (
         <div className="App">
-            <MatrixTest size={4} appState={appState} currentItem={currentAnimal} setCurrentItem={setCurrentAnimal}></MatrixTest>
+            <MatrixTest size={3} appState={appState} currentItem={currentAnimal} setCurrentItem={setCurrentAnimal}></MatrixTest>
             <div className="item">
                 <FixedSizeList
                     height={400}
