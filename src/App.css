@@ -38,6 +38,7 @@
   margin: 5px 0;
   cursor: grab;
   background-color: white;
+  display: inline-block;
 }
 .row{
   width: 150%;
@@ -77,6 +78,7 @@
   border: 30px solid white;
 }
 .button {
+  background-color: lightpink;
 
 }
 . bott {

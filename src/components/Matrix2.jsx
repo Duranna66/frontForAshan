@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {FixedSizeList} from "react-window";
 import app from "../App";
-import Button from "./Button";
+import SaveButton from "./SaveButton";
+import DeletePrisonButton from "./DeletePrisonButton";
 
 
-function MatrixTest({ size }) {
-    const [appState, setAppState] = useState([])
+function MatrixTest({ size, appState, setAppState }) {
     useEffect(() => {
         const apiUrl = "http://localhost:8080/search/all";
         axios.get(apiUrl).then((resp) => {
@@ -14,6 +14,7 @@ function MatrixTest({ size }) {
             setAppState(allPersons);
         });
     }, []);
+
     let matrix = [];
     const [currentItem, setCurrentItem] = useState([])
     for (let i = 0; i < size; i++) {
@@ -58,7 +59,6 @@ function MatrixTest({ size }) {
     }
 
     function dragStartHandler(e, itemr) {
-        // console.log(board) //двумерный массив массив, с животными с которого взяли
         // console.log(itemr) //массив с данными животного, которого взяли
         setCurrentItem(itemr);
     }
@@ -138,7 +138,7 @@ function MatrixTest({ size }) {
                                                 onDragStart={(e) => dragStartHandler(e, r)}
                                                 onDragEnd={(e) => dragEndHandler(e)}
                                                 onDrop={(e) => dropHandler(e, r)}
-                                                className={"items"}>{r.name} {x.id}</div>;
+                                                className={"items"}>{r.name}<DeletePrisonButton className={"button"} appState={r}></DeletePrisonButton></div>;
                                         } else {
                                             return <div className={"empty"} onDrop={(e) => dropHandler(e, r)}
                                                         onDragOver={(e) => dragOverHandler(e)}
@@ -150,20 +150,22 @@ function MatrixTest({ size }) {
                         ))}
                     </tr>
                 ))}
-                <Button appState={appState}></Button>
+                <SaveButton appState={appState}></SaveButton>
             </table>
             <div className="item">
-                {appState.map(x => {if(x.isDeleted === "true") {
-                    return <div className={"items"}
+                {appState.map(x =>
+                    <div className={"items"}
                          draggable={true}
                          onDragStart={(e) => dragStartHandlerList(e,x)}
                          onDragOver={(e) => dragOverHandler(e)}
                 >
                     {x.name}
-                </div>}})}
+                        <button className={"button"}>x</button>
+                    </div>)}
             </div>
         </div>
     );
 }
 
 export default MatrixTest;
+//<button className={"button"}>x</button>

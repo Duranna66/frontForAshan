@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-function Button({appState}) {
+function SaveButton({appState}) {
     const [data, setData] = useState(null);
 
     const handleClick = () => {
-        fetch('http://localhost:8080/search/test', {
+        fetch('http://localhost:8080/search/update', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -17,6 +17,7 @@ function Button({appState}) {
             })
             .catch(error => {
             });
+        window.location.reload(false);
     };
 
     return (
@@ -27,4 +28,4 @@ function Button({appState}) {
     );
 }
 
-export default Button;
+export default SaveButton;
