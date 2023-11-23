@@ -11,9 +11,18 @@ import InputPrison from "./components/InputPrison";
 function App() {
     const [appState, setAppState] = useState([])
     const [size, setSize] = useState(0)
+    useEffect(() => {
+        const apiUrl = "http://localhost:8080/search/size";
+        axios.get(apiUrl).then((resp) => {
+            const gotSize = resp.data;
+            setSize(gotSize.size);
+        });
+    }, []);
     return (
+
         <div className="App">
-            <MatrixTest size={3} appState={appState} setAppState={setAppState}></MatrixTest>
+            <InputPrison setSize={setSize}></InputPrison>
+            <MatrixTest size={size} appState={appState} setAppState={setAppState}></MatrixTest>
         </div>
 
     );
