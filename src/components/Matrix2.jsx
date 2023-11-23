@@ -4,6 +4,7 @@ import {FixedSizeList} from "react-window";
 import app from "../App";
 import SaveButton from "./SaveButton";
 import DeletePrisonButton from "./DeletePrisonButton";
+import DeleteButton from "./DeleteButton";
 
 
 function MatrixTest({ size, appState, setAppState }) {
@@ -76,8 +77,8 @@ function MatrixTest({ size, appState, setAppState }) {
     function dropHandler(e, itemr) {
 
         e.preventDefault()
-        console.log('i:',itemr) //массив с данными животного, в которого положили
-        console.log('c:', currentItem) //массив с данными животного, которого взяли
+        // console.log('i:',itemr) //массив с данными животного, в которого положили
+        // console.log('c:', currentItem) //массив с данными животного, которого взяли
         let k1 = -1 //c кем обмениваемся
         let k2 = -1;// кого обмениваем
         if(currentItem.prison_id === undefined) {
@@ -154,14 +155,17 @@ function MatrixTest({ size, appState, setAppState }) {
             </table>
             <div className="item">
                 {appState.map(x =>
-                    <div className={"items"}
-                         draggable={true}
-                         onDragStart={(e) => dragStartHandlerList(e,x)}
-                         onDragOver={(e) => dragOverHandler(e)}
-                >
-                    {x.name}
-                        <button className={"button"}>x</button>
-                    </div>)}
+                    x.isDeleted !== 'q' ? (
+                        <div className={"items"}
+                             draggable={true}
+                             onDragStart={(e) => dragStartHandlerList(e,x)}
+                             onDragOver={(e) => dragOverHandler(e)}
+                        >
+                            {x.name}
+                            <DeleteButton appState={x}>x</DeleteButton>
+                        </div>
+                    ) : null
+                )}
             </div>
         </div>
     );

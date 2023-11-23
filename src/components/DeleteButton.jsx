@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import SaveButton from "./SaveButton";
-import Matrix from "./Matrix";
 
-function DeletePrisonButton({appState}) {
+function DeleteButton({appState}) {
     const [data, setData] = useState(null);
-
     const handleClick = () => {
-        const animal = {id: appState.animal_id, name: appState.name, phoneNumber: appState.prison_id, isDeleted: 'false'}
-        fetch('http://localhost:8080/search/deleteFromPrison', {
+        console.log("app",appState)
+        const animal = {id: appState.id, name: appState.name, phoneNumber: appState.phoneNumber, isDeleted: 'q'}
+        console.log(animal)
+        fetch('http://localhost:8080/search/deleteFromList', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,14 +18,17 @@ function DeletePrisonButton({appState}) {
                 setData(data);
             })
             .catch(error => {
+                console.log(error)
             });
 
         window.location.reload(false);
-        console.log(animal)
+
     };
     return (
-        <button className={"button"} onClick={handleClick} >X</button>
+        <button className={"button"} onClick={handleClick}>
+            X
+        </button>
     );
 }
 
-export default DeletePrisonButton;
+export default DeleteButton;
