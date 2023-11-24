@@ -3,9 +3,7 @@ import React, {useState} from 'react';
 function DeleteButton({appState}) {
     const [data, setData] = useState(null);
     const handleClick = () => {
-        console.log("app",appState)
-        const animal = {id: appState.id, name: appState.name, phoneNumber: appState.phoneNumber, isDeleted: 'q'}
-        console.log(animal)
+        const animal = {id: appState.id, name: appState.name, isPredator:appState.isPredator, phoneNumber: appState.phoneNumber, isDeleted: 'q'}
         fetch('http://localhost:8080/search/deleteFromList', {
             method: 'PATCH',
             headers: {

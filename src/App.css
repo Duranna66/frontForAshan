@@ -40,6 +40,26 @@
   background-color: white;
   display: inline-block;
 }
+.itemsT {
+  width: 100%;
+  border: 2px solid lightpink;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 5px 0;
+  cursor: grab;
+  background-color: deepskyblue;
+  display: inline-block;
+}
+.itemsP {
+  width: 100%;
+  border: 2px solid lightpink;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 5px 0;
+  cursor: grab;
+  background-color: hotpink;
+  display: inline-block;
+}
 .row{
   width: 150%;
   border: 2px solid lightpink;
