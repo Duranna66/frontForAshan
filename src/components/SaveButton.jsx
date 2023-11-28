@@ -22,7 +22,7 @@ function SaveButton({appState}) {
 
     return (
         <div className={"bott"}>
-            <button className={"button"} onClick={handleClick}>сохранить</button>
+            <button className={"addButton"} onClick={handleClick}>сохранить</button>
             {data && <div>{JSON.stringify(data)}</div>}
         </div>
     );

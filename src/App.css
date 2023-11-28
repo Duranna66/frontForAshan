@@ -37,7 +37,7 @@
   border-radius: 6px;
   margin: 5px 0;
   cursor: grab;
-  background-color: white;
+  background-color: wheat;
   display: inline-block;
 }
 .itemsT {
@@ -133,6 +133,81 @@ input[type="text"] {
 
 input[type="text"]:focus {
   border-color: #4CAF50;
+}
+.addButt {
+}
+.modal_content {
+  height: 500px;
+  width: 500px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+.title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+.modal_background {
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(200,200,200);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal_content.active {
+  transform: scale(1);
+}
+.addButton {
+  background-color: #f0f0f;
+  color: #3a7999;
+  border: 3px solid #3a7999;
+  padding: 10px 35px;
+  overflow: hidden;
+}
+
+.addButton:active {
+  background-color: #3a7999;
+  color: #f0f0f;
+  border: 3px dotted #3a7999;
+}
+.highlight {
+  background-color: yellow;
+}
+
+/* Display only. Not needed! */
+
+@import 'https://raw.githubusercontent.com/jonathantneal/system-font-css/gh-pages/system-font.css';
+
+body {
+  background: dodgerblue linear-gradient(22deg, aqua, dodgerblue, deeppink) fixed;
+  color: white;
+  font: normal 12px/1.6 system-ui, sans-serif;
+  text-shadow: 0 1px 1px hsl(0 0% 0% / 20%);
+  margin: 3rem;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus,
+a:hover {
+  text-decoration-color: black;
+}
+
+.myInput {
+  font: inherit;
+  padding: 0.2em 0.5em;
 }
 
 

@@ -7,8 +7,11 @@ import Matrix2 from "./components/Matrix2";
 import MatrixTest from "./components/Matrix2";
 import SaveButton from "./components/SaveButton";
 import InputPrison from "./components/InputPrison";
+import Modal from "./components/Modal";
+
 
 function App() {
+    const [openModal, setOpenModal] = useState(false)
     const [appState, setAppState] = useState([])
     const [size, setSize] = useState(0)
     useEffect(() => {
@@ -21,8 +24,11 @@ function App() {
     return (
 
         <div className="App">
+            { openModal &&  <Modal setActive={setOpenModal} appState={appState} setAppState={setAppState}/>}
+            <div className={"container"}>
             <InputPrison setSize={setSize}></InputPrison>
-            <MatrixTest size={size} appState={appState} setAppState={setAppState}></MatrixTest>
+            <MatrixTest size={size} appState={appState} setAppState={setAppState} openModal={openModal} setOpenModal={setOpenModal}></MatrixTest>
+            </div>
         </div>
 
     );

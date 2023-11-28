@@ -5,9 +5,10 @@ import app from "../App";
 import SaveButton from "./SaveButton";
 import DeletePrisonButton from "./DeletePrisonButton";
 import DeleteButton from "./DeleteButton";
+import Modal from "./Modal";
 
 
-function MatrixTest({ size, appState, setAppState }) {
+function MatrixTest({ size, appState, setAppState, openModal, setOpenModal }) {
     useEffect(() => {
         const apiUrl = "http://localhost:8080/search/all";
         axios.get(apiUrl).then((resp) => {
@@ -138,11 +139,11 @@ function MatrixTest({ size, appState, setAppState }) {
                 break;
             }
         }
-        if(k1 !== -1) { //когда обмениваем друг с другом
-            let tmp = appState[k1].phoneNumber;
-            appState[k1].phoneNumber = appState[k2].phoneNumber
-            appState[k2].phoneNumber = tmp
-        }
+        // if(k1 !== -1) { //когда обмениваем друг с другом
+        //     let tmp = appState[k1].phoneNumber;
+        //     appState[k1].phoneNumber = appState[k2].phoneNumber
+        //     appState[k2].phoneNumber = tmp
+        // }
          if(k1 === -1 && k2 !== -1) { //itemr is empty['', 'prison_id', '']
              if(currentItem.isPredator === 'true') {
                  if (board[0].isPredator === 'true' || (board[0].isPredator === '0' && board[1].isPredator === '0'))
@@ -173,7 +174,6 @@ function MatrixTest({ size, appState, setAppState }) {
         }
 
         setCurrentItem(itemr);
-        //mb setCurrentBoard(board)
     }
     return (
         <div className="container">
@@ -213,9 +213,13 @@ function MatrixTest({ size, appState, setAppState }) {
                                 )}
                             </td>
                         ))}
+
                     </tr>
                 ))}
+                <div className={"container"}>
                 <SaveButton appState={appState}></SaveButton>
+                    <button className={"addButton"} onClick={() => setOpenModal(true)}>add</button>
+                </div>
             </table>
             <div className="item">
                 {appState.map(x =>

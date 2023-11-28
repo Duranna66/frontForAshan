@@ -5,6 +5,9 @@ function InputPrison({ setSize }) {
 
     const handleClick = () => {
         const inputValueAsNumber = parseInt(inputValue, 10);
+        if(inputValueAsNumber <= 0) {
+            return
+        }
         if (!isNaN(inputValueAsNumber)) {
             fetch('http://localhost:8080/search/sizeUpdate', {
                 method: 'PATCH',
@@ -20,8 +23,6 @@ function InputPrison({ setSize }) {
                 .catch(error => {
                     console.log(error);
                 });
-        } else {
-            console.log('Введено не число');
         }
     };
 
@@ -34,7 +35,7 @@ function InputPrison({ setSize }) {
             <form>
                 <label>кол-во вальеров</label>
                 <input
-                    className={"myinput"}
+                    className={"myInput"}
                     value={inputValue}
                     onChange={inputChangeHandler}
                 ></input>
