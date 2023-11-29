@@ -8,9 +8,10 @@ function InputPrison({ setSize }) {
         if(inputValueAsNumber <= 0) {
             return
         }
-        // if(inputValueAsNumber) {
-        //
-        // }
+        if(inputValueAsNumber > 101) {
+            alert('Давай поменьше братан <= 100')
+            return;
+        }
         if (!isNaN(inputValueAsNumber)) {
             fetch('http://localhost:8080/search/sizeUpdate', {
                 method: 'PATCH',
@@ -36,7 +37,7 @@ function InputPrison({ setSize }) {
     return (
         <div>
             <form>
-                <label>кол-во вальеров</label>
+                <label>размер зоопарка</label>
                 <input
                     className={"myInput"}
                     value={inputValue}

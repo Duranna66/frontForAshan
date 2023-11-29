@@ -7,9 +7,10 @@ import DeletePrisonButton from "./DeletePrisonButton";
 import DeleteButton from "./DeleteButton";
 import Modal from "./Modal";
 import GenerateButton from "./GenerateButton";
+import InputPrison from "./InputPrison";
 
 
-function MatrixTest({ size, appState, setAppState, openModal, setOpenModal }) {
+function MatrixTest({ size, setSize, appState, setAppState, openModal, setOpenModal }) {
     useEffect(() => {
         const apiUrl = "http://localhost:8080/search/all";
         axios.get(apiUrl).then((resp) => {
@@ -178,7 +179,7 @@ function MatrixTest({ size, appState, setAppState, openModal, setOpenModal }) {
     }
     return (
         <div className="container">
-            <table className="item">
+            <table className="itemM">
                 {matrix.map((row, rowIndex) => (
                     <tr key={`row-${rowIndex}`}>
                         {row.map((cell, colIndex) => (
@@ -214,7 +215,6 @@ function MatrixTest({ size, appState, setAppState, openModal, setOpenModal }) {
                                 )}
                             </td>
                         ))}
-
                     </tr>
                 ))}
                 <div className={"container"}>
@@ -222,6 +222,7 @@ function MatrixTest({ size, appState, setAppState, openModal, setOpenModal }) {
                 <SaveButton appState={appState} matrix={matrix}></SaveButton>
                     <button className={"addButton"} onClick={() => setOpenModal(true)}>добавить</button>
                 </div>
+                <InputPrison setSize={setSize}></InputPrison>
             </table>
             <div className="item">
                 {appState.map(x => {

@@ -26,8 +26,7 @@ function App() {
         <div className="App">
             { openModal &&  <Modal setActive={setOpenModal} appState={appState} setAppState={setAppState}/>}
             <div className={"container"}>
-            <InputPrison setSize={setSize}></InputPrison>
-            <MatrixTest size={size} appState={appState} setAppState={setAppState} openModal={openModal} setOpenModal={setOpenModal}></MatrixTest>
+            <MatrixTest size={size} setSize={setSize} appState={appState} setAppState={setAppState} openModal={openModal} setOpenModal={setOpenModal}></MatrixTest>
             </div>
         </div>
 

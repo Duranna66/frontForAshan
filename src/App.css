@@ -28,7 +28,20 @@
   display: flex;
   flex-direction: column; /* располагает элементы вертикально */
   align-items: center; /* выравнивает элементы по центру по горизонтали */
-  justify-content: start /* распределяет пространство вокруг элементов */
+  justify-content: start; /* распределяет пространство вокруг элементов */
+  overflow: scroll;
+}
+.itemM {
+  /*margin-left: 500px;*/
+  min-width: 450px;
+  min-height: 470px;
+  /*border: 5px solid lightblue;*/
+  padding: 20px 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column; /* располагает элементы вертикально */
+  align-items: center; /* выравнивает элементы по центру по горизонтали */
+  justify-content: start; /* распределяет пространство вокруг элементов */
 }
 .items {
   width: 100%;
@@ -208,7 +221,7 @@ a:hover {
 }
 
 .myInput {
-  width: 300px;
+  width: 226px;
   font-size: 13px;
   padding: 6px 0 4px 10px;
   border: 1px solid plum;
