@@ -6,6 +6,7 @@ import SaveButton from "./SaveButton";
 import DeletePrisonButton from "./DeletePrisonButton";
 import DeleteButton from "./DeleteButton";
 import Modal from "./Modal";
+import GenerateButton from "./GenerateButton";
 
 
 function MatrixTest({ size, appState, setAppState, openModal, setOpenModal }) {
@@ -217,23 +218,48 @@ function MatrixTest({ size, appState, setAppState, openModal, setOpenModal }) {
                     </tr>
                 ))}
                 <div className={"container"}>
-                    <button className={"addButton"}>сгенерировать</button>
+                    <GenerateButton className={"addButton"}>сгенерировать</GenerateButton>
                 <SaveButton appState={appState} matrix={matrix}></SaveButton>
                     <button className={"addButton"} onClick={() => setOpenModal(true)}>добавить</button>
                 </div>
             </table>
             <div className="item">
-                {appState.map(x =>
-                    x.isDeleted !== 'q' && x.isPredator === 'true' ? (
-                        <div className={"itemsP"}
-                             draggable={true}
-                             onDragStart={(e) => dragStartHandlerList(e,x)}
-                             onDragOver={(e) => dragOverHandler(e)}
+                {appState.map(x => {
+                    if(x.isDeleted !== 'q' && x.isPredator === 'true') {
+                        return <div className={"itemsT"}
+                                     draggable={true}
+                                     onDragStart={(e) => dragStartHandlerList(e,x)}
+                                     onDragOver={(e) => dragOverHandler(e)}
+                                >
+                                    {x.name}
+                                    <DeleteButton appState={x}>x</DeleteButton>
+                                </div>
+                    }
+                    else if(x.isDeleted !== 'q' && x.isPredator === 'false') {
+                        return <div className={"itemsP"}
+                                    draggable={true}
+                                    onDragStart={(e) => dragStartHandlerList(e,x)}
+                                    onDragOver={(e) => dragOverHandler(e)}
                         >
                             {x.name}
                             <DeleteButton appState={x}>x</DeleteButton>
                         </div>
-                    ) : null
+                    }
+                    else {
+                        return null;
+                    }
+                    }
+
+                    // x.isDeleted !== 'q' && x.isPredator === 'true' ? (
+                    //     <div className={"itemsP"}
+                    //          draggable={true}
+                    //          onDragStart={(e) => dragStartHandlerList(e,x)}
+                    //          onDragOver={(e) => dragOverHandler(e)}
+                    //     >
+                    //         {x.name}
+                    //         <DeleteButton appState={x}>x</DeleteButton>
+                    //     </div>
+                    // ) : null
                 )}
             </div>
         </div>

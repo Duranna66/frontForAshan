@@ -8,6 +8,9 @@ function InputPrison({ setSize }) {
         if(inputValueAsNumber <= 0) {
             return
         }
+        // if(inputValueAsNumber) {
+        //
+        // }
         if (!isNaN(inputValueAsNumber)) {
             fetch('http://localhost:8080/search/sizeUpdate', {
                 method: 'PATCH',
@@ -39,7 +42,7 @@ function InputPrison({ setSize }) {
                     value={inputValue}
                     onChange={inputChangeHandler}
                 ></input>
-                <button onClick={handleClick}>submit</button>
+                <button className={"addButton"} onClick={handleClick}>submit</button>
             </form>
         </div>
     );
