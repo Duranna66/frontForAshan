@@ -217,14 +217,15 @@ function MatrixTest({ size, appState, setAppState, openModal, setOpenModal }) {
                     </tr>
                 ))}
                 <div className={"container"}>
-                <SaveButton appState={appState}></SaveButton>
-                    <button className={"addButton"} onClick={() => setOpenModal(true)}>add</button>
+                    <button className={"addButton"}>сгенерировать</button>
+                <SaveButton appState={appState} matrix={matrix}></SaveButton>
+                    <button className={"addButton"} onClick={() => setOpenModal(true)}>добавить</button>
                 </div>
             </table>
             <div className="item">
                 {appState.map(x =>
-                    x.isDeleted !== 'q' ? (
-                        <div className={"items"}
+                    x.isDeleted !== 'q' && x.isPredator === 'true' ? (
+                        <div className={"itemsP"}
                              draggable={true}
                              onDragStart={(e) => dragStartHandlerList(e,x)}
                              onDragOver={(e) => dragOverHandler(e)}

@@ -34,10 +34,11 @@
   width: 100%;
   border: 2px solid lightpink;
   padding: 10px;
+  color: white;
   border-radius: 6px;
   margin: 5px 0;
   cursor: grab;
-  background-color: wheat;
+  background-color: plum;
   display: inline-block;
 }
 .itemsT {
