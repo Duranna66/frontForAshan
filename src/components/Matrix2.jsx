@@ -36,16 +36,16 @@ function MatrixTest({ size, setSize, appState, setAppState, openModal, setOpenMo
         for (let i = 0; i < size; i++) {
             for (let j = 0; j < size; j++) {
                 let tmp = [[{id:0, prison_id: i * size + j + 1, isPredator: "0", animal_id: 0, name:''}, {id:1, prison_id: i * size + j + 1, isPredator: '0', animal_id: 0, name:''}]]
-                if (appState.length > 0 && j === (appState[k].phoneNumber - 1) % size && i === Math.floor((appState[k].phoneNumber - 1) / size) && appState[k].isDeleted === 'false') {
+                if (appState.length > 0 && j === (appState[k].prisonId - 1) % size && i === Math.floor((appState[k].prisonId - 1) / size) && appState[k].isDeleted === 'false') {
                     let index = matrix[i][j].map(x => x.map(y => {if(y.name === '') {
                         return y.id
                     }}))
                     if(index[0][0] === 0) {
-                        tmp = [[{id:0, prison_id: appState[k].phoneNumber, isPredator: appState[k].isPredator, animal_id: appState[k].id, name: appState[k].name}, {id:1, prison_id: matrix[i][j][0][1].prison_id, isPredator: matrix[i][j][0][1].isPredator,  animal_id: matrix[i][j][0][1].id ,name: matrix[i][j][0][1].name}]]
+                        tmp = [[{id:0, prison_id: appState[k].prisonId, isPredator: appState[k].isPredator, animal_id: appState[k].id, name: appState[k].name}, {id:1, prison_id: matrix[i][j][0][1].prison_id, isPredator: matrix[i][j][0][1].isPredator,  animal_id: matrix[i][j][0][1].id ,name: matrix[i][j][0][1].name}]]
 
                     }
                     else if(index[0][1] === 1) {
-                        tmp = [[{id:0, prison_id: matrix[i][j][0][0].prison_id ,isPredator: matrix[i][j][0][0].isPredator, animal_id: matrix[i][j][0][0].animal_id , name: matrix[i][j][0][0].name}, {id:1, prison_id: appState[k].phoneNumber, isPredator: appState[k].isPredator,  animal_id: appState[k].id, name: appState[k].name}]]
+                        tmp = [[{id:0, prison_id: matrix[i][j][0][0].prison_id ,isPredator: matrix[i][j][0][0].isPredator, animal_id: matrix[i][j][0][0].animal_id , name: matrix[i][j][0][0].name}, {id:1, prison_id: appState[k].prisonId, isPredator: appState[k].isPredator,  animal_id: appState[k].id, name: appState[k].name}]]
                     }
                     matrix[i][j] = tmp
                 }
@@ -73,7 +73,7 @@ function MatrixTest({ size, setSize, appState, setAppState, openModal, setOpenMo
     function dragStartHandlerList(e, x) {
         // console.log(x)
         // console.log({id: 0, phoneNumber: x.phoneNumber, isPredator: x.isPredator, animal_id: x.id, name: x.name})
-        setCurrentItem([{id: 0, phoneNumber: x.phoneNumber, isPredator: x.isPredator, animal_id: x.id, name: x.name}]);
+        setCurrentItem([{id: 0, prisonId: x.prisonId, isPredator: x.isPredator, animal_id: x.id, name: x.name}]);
     }
     useEffect(() => {
     }, [currentItem]);
@@ -105,11 +105,11 @@ function MatrixTest({ size, setSize, appState, setAppState, openModal, setOpenMo
                 if (board[0].isPredator === 'true' || (board[0].isPredator === '0' && board[1].isPredator === '0'))
                 {
                     appState[k1].isDeleted = 'false'
-                    appState[k1].phoneNumber = itemr.prison_id
+                    appState[k1].prisonId = itemr.prison_id
                 }
                 else if(board[1].isPredator === 'true' || (board[0].isPredator === '0' && board[1].isPredator === '0')) {
                     appState[k1].isDeleted = 'false'
-                    appState[k1].phoneNumber = itemr.prison_id
+                    appState[k1].prisonId = itemr.prison_id
                 }
                 else {
                     alert(board[0].name + " is not Predator")
@@ -118,10 +118,10 @@ function MatrixTest({ size, setSize, appState, setAppState, openModal, setOpenMo
             else if(currentItem[0].isPredator === 'false') {
                 if (board[0].isPredator === 'false' || (board[0].isPredator === '0' && board[1].isPredator === '0')) {
                     appState[k1].isDeleted = 'false'
-                    appState[k1].phoneNumber = itemr.prison_id
+                    appState[k1].prisonId = itemr.prison_id
                 } else if (board[0].isPredator === 'false' || (board[0].isPredator === '0' && board[1].isPredator === '0')) {
                     appState[k1].isDeleted = 'false'
-                    appState[k1].phoneNumber = itemr.prison_id
+                    appState[k1].prisonId = itemr.prison_id
                 } else {
                     alert(board[0].name + " is Predator")
                 }
@@ -150,10 +150,10 @@ function MatrixTest({ size, setSize, appState, setAppState, openModal, setOpenMo
              if(currentItem.isPredator === 'true') {
                  if (board[0].isPredator === 'true' || (board[0].isPredator === '0' && board[1].isPredator === '0'))
                  {
-                     appState[k2].phoneNumber = itemr.prison_id
+                     appState[k2].prisonId = itemr.prison_id
                  }
                  else if(board[1].isPredator === 'true' || (board[0].isPredator === '0' && board[1].isPredator === '0')) {
-                     appState[k2].phoneNumber = itemr.prison_id
+                     appState[k2].prisonId = itemr.prison_id
                  }
                  else {
                      alert(board[0].name + " is not Predator")
@@ -161,9 +161,9 @@ function MatrixTest({ size, setSize, appState, setAppState, openModal, setOpenMo
              }
              else if(currentItem.isPredator === 'false') {
                  if (board[0].isPredator === 'false' || (board[0].isPredator === '0' && board[1].isPredator === '0')) {
-                     appState[k2].phoneNumber = itemr.prison_id
+                     appState[k2].prisonId = itemr.prison_id
                  } else if (board[0].isPredator === 'false' || (board[0].isPredator === '0' && board[1].isPredator === '0')) {
-                     appState[k2].phoneNumber = itemr.prison_id
+                     appState[k2].prisonId = itemr.prison_id
                  } else {
                      alert(board[0].name + " is Predator")
                  }

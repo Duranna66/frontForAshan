@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import SaveButton from "./SaveButton";
-import Matrix from "./Matrix";
+
 
 function DeletePrisonButton({appState}) {
     const [data, setData] = useState(null);
 
     const handleClick = () => {
-        const animal = {id: appState.animal_id, name: appState.name, isPredator: appState.isPredator, phoneNumber: appState.prison_id, isDeleted: 'false'}
+        const animal = {id: appState.animal_id, name: appState.name, isPredator: appState.isPredator, prisonId: appState.prison_id, isDeleted: 'false'}
         fetch('http://localhost:8080/search/deleteFromPrison', {
             method: 'PATCH',
             headers: {

@@ -14,7 +14,7 @@ function Modal({ active, setActive, setAppState, appState }) {
         //     }
         // }
 
-            let value = {name: inputValue, phoneNumber:-1, isPredator:isPredator, isDeleted:'true'}
+            let value = {name: inputValue, prisonId:-1, isPredator:isPredator, isDeleted:'true'}
             fetch('http://localhost:8080/search/addAnimal', {
                 method: 'POST',
                 headers: {
